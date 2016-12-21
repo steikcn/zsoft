@@ -29,9 +29,18 @@ build/Release
 # Dependency directories
 node_modules
 jspm_packages
+bower_components
 
 # Optional npm cache directory
 .npm
 
 # Optional REPL history
 .node_repl_history
+
+
+#*?[abc][0-9]
+#a/**/z 使用两个星号（*) 表示匹配任意中间目录
+#!  惊叹号（!）取反
+#directory/ 匹配模式可以以（/）结尾指定目录
+#/currentFile 匹配模式可以以（/）开头防止递归
+
