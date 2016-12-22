@@ -1,1 +1,1 @@
-# zsoft learn GIT
+# learn GIT
