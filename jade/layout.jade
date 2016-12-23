@@ -1,0 +1,17 @@
+//-声明jade变量
+-var jcourse='jade语法'
+-var hehe='变量可以定义在另一个文件中'
+
+doctype html
+html
+  head
+    //include
+    include head
+  style.
+    body {color: #ff6600}
+  script.
+    var course='jade'
+  body
+    block desc
+      p desc from layout
+    block content

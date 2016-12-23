@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--include-->
+    <meta charset="utf-8">
+    <title>jade语法 study</title>
+  </head>
+  <style>body {color: #ff6600}</style>
+  <script>var course='jade'</script>
+  <body>
+    <p>变量可以定义在另一个文件中</p>
+    <p>块定义覆盖</p>
+    <!--markdown--><p>this is <strong>markdown</strong> <a href="http://baidu.com">link</a></p>
+    <!--coffee-script-->
+    <script>(function() {
+  var cc;
+
+  cc = [1, 2, 3, 4, 5];
+
+}).call(this);
+
+    </script>
+    <!--less 没成功
+    style
+      :less
+        body {
+          p {
+            color: #CCC;
+          }
+        }
+    -->
+    <p>变量可以定义在另一个文件中</p>
+    <p>块定义覆盖</p>
+<p>include xx.html 嵌入片段html</p>
+    <div class="mydiv"><a href="http://www.imooc.com" aa="">iMOOC</a>
+      <input type="text" name="course" value="jade">
+      <input type="checkbox" name="chk" checked>
+      <!--混合成段文本和标签-->
+      <p>1. aa<strong>123</strong>2. bb<span>456</span>3. cc</p>
+      <p>
+        1. aa
+        <strong>123</strong>
+        2. bb
+        3. cc
+      </p>
+      <!--原始html--><a href='http://baidu.com'>baidu</a>
+    </div>
+    <!--单行注释，编译成html注释-->
+    <!--块注释块注释
+    -->
+    <!--转义-->
+    <p>&lt;script&gt;alert(1)&lt;/script&gt;</p>
+    <p><script>alert(1)</script></p>
+    <p>&lt;script&gt;alert(1)&lt;/script&gt;</p>
+    <p><script>alert(1)</script></p>
+    <p>#{htmlData}</p>
+    <p>\p!= htmlData</p>
+    <!--未定义变量 newData-->
+    <input value="undefined">
+    <input>
+    <!--each...in...-->
+    <dl>
+      <dt>1</dt>
+      <dd>a</dd>
+      <dd>b</dd>
+      <dt>2</dt>
+      <dd>aa</dd>
+      <dd>bb</dd>
+    </dl>
+    <!--for-->
+    <p>course:jade</p>
+    <p>level:high</p>
+    <!--each value,key in obj-->
+    <p>course::jade</p>
+    <p>level::high</p>
+    <!--while-->
+    <ul></ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <!--if else if else-->
+    <p>node,jade</p>
+    <!--unless-->
+    <p>unless</p>
+    <!--case-->
+    <p>hi jade1</p>
+    <!--mixin定义和调用-->
+        <p>mixin可定义一段语句</p>
+        <p>可在定义后调用</p>
+        <p>Tom study</p>
+        <ul class="courses">
+          <li>node</li>
+          <li>jade</li>
+        </ul>
+            <p>Tom study</p>
+            <ul class="courses">
+              <li>node</li>
+              <li>jade</li>
+            </ul>
+    <!--带block的mixin-->
+        <p>这里是block</p>
+        <p>这里是block</p>
+        <h4>带block的mixin</h4>
+    <!--属性值-->
+        <p class="magic">有点难懂哦</p>
+        <p>hahaha</p>
+    <!--嵌入不确定数量的属性值-->
+        <p>嵌入不确定数量的属性值</p>
+        <p class2="magic" aaa="hahaha">嵌入不确定数量的属性值</p>
+    <!--不确定数量的参数-->
+        <p>不确定数量的参数</p>
+        <ul class="magic">
+          <li>js</li>
+          <li>node</li>
+          <li>express</li>
+          <li>mongodb</li>
+          <li>angular</li>
+          <li>jade</li>
+        </ul>
+  </body>
+</html>

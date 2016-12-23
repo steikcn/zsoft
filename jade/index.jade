@@ -1,0 +1,143 @@
+extends layout
+block content
+  //markdown
+  :markdown
+    this is **markdown** [link](http://baidu.com)
+  //coffee-script
+  script
+    :coffee
+      cc=[1..5]
+  //less 没成功
+    style
+      :less
+        body {
+          p {
+            color: #CCC;
+          }
+        }
+  block desc
+    p=hehe
+    p 块定义覆盖
+  include piece.html
+  .mydiv
+    a(href='http://www.imooc.com',aa='') iMOOC
+    input(type='text',name='course',value='jade')
+    input(type='checkbox',name='chk' checked)
+    //混合成段文本和标签
+    p
+      |1. aa
+      strong 123
+      |2. bb
+      span 456
+      |3. cc
+    p.
+      1. aa
+      <strong>123</strong>
+      2. bb
+      3. cc
+    //原始html
+    <a href='http://baidu.com'>baidu</a>
+  //单行注释，编译成html注释
+  //-非缓冲注释，不会编译成html注释
+  //块注释
+    块注释
+  //-非缓冲块注释，不会编译成html注释
+    非缓冲块注释，不会编译成html注释
+
+  - var htmlData='<script>alert(1)</script>'
+  //转义
+  p #{htmlData}
+  p !{htmlData}
+  p= htmlData
+  p!= htmlData
+  p \#{htmlData}
+  p \p!= htmlData
+  //未定义变量 newData
+  input(value='#{newData}')
+  input(value=newData)
+
+  //each...in...
+  -var sections = [{id:1,items:['a','b']},{id:2,items:['aa','bb']}]
+  dl
+    each section in sections
+      dt= section.id
+      each item in section.items
+        dd= item
+  //for
+  -var imooc={course:'jade',level:'high'}
+  -for (var key in imooc)
+    p=key+':'+imooc[key]
+  //each value,key in obj
+  each value,key in imooc
+    p #{key}::#{value}
+  //while
+  -var n=0
+  ul
+  while n<3
+    li= ++n
+  //if else if else
+  -var isMooc=true
+  -var lessons = ['node','jade']
+  if lessons
+    if lessons.length>1
+      p=lessons.join(',')
+    else if lessons.length=1
+      p=lessons[0]
+    else
+      p no lesson
+  //unless
+  unless !isMooc
+    p unless
+  //case
+  -var name='jade1'
+  case name
+    when 'node': p hi node
+    when 'express'
+      p Express
+    when 'jade': p hi jade
+    default
+      p hi #{name}
+  //mixin定义和调用
+  mixin m1
+    p mixin可定义一段语句
+    p 可在定义后调用
+  +m1
+  mixin study(name,courses)
+    p #{name} study
+    ul.courses
+      each course in courses
+        li= course
+  +study('Tom',['node','jade'])
+  mixin group(student)
+    +study(student.name,student.courses)
+  +group({name:'Tom',courses:['node','jade']})
+  //带block的mixin
+  mixin m2(slogon)
+    if block
+      block
+    else
+      p 没有block
+    h4=slogon
+  +m2('带block的mixin')
+    p 这里是block
+    p 这里是block
+  //属性值
+  mixin m3(name)
+    p(class!=attributes.class2) #{name}
+  +m3('有点难懂哦')(class2='magic')
+  mixin m4()
+    p #{attributes.aaa}
+  +m4()(aaa='hahaha')
+  //嵌入不确定数量的属性值
+  mixin m5(p)
+    p=p
+    p&attributes(attributes)=p
+  +m5('嵌入不确定数量的属性值')(class2='magic',aaa='hahaha')
+  //不确定数量的参数
+  mixin m6(p,c,...items)
+    p=p
+    ul(class=c)
+      each item in items
+        li=item
+  +m6('不确定数量的参数','magic','js','node','express','mongodb','angular','jade')
+

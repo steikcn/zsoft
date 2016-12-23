@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "coffee-script": "^1.11.1",
+    "jade": "^1.11.0",
+    "less": "^2.7.1",
+    "markdown": "^0.5.0"
+  }
+}
